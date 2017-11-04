@@ -46,9 +46,9 @@ self.addEventListener('push', function(event) {
   console.log('[Service Worker] Push Received.');
   console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-  const title = 'Push Codelab';
+  const title = 'Who Dares Cares';
   const options = {
-    body: 'Yay it works.',
+    body: 'You have a callback request.',
     icon: 'images/icon.png',
     badge: 'images/badge.png'
   };
@@ -62,7 +62,7 @@ self.addEventListener('notificationclick', function(event) {
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('https://developers.google.com/web/')
+    clients.openWindow('http://xxxxxx.xx')
   );
 });
 
