@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -23,11 +24,28 @@ and open the template in the editor.
         </div>
     </div>
 </nav>
-    <div class ="user-options">
-        <button type="button" class="btn btn-primary btn-option">Log in to Get help</button>
-        <a href = "Help.php"><button type="button" class="btn btn-success btn-option">Get help immediately</button></a>
-        
+<div class="form-group sector-dd">
+  <label for="sel1">Sector</label>
+  <select class="form-control" id="sel1">
+    <option>Army Vet</option>
+    <option>Fire service</option>
+    <option>Police</option>
+    <option>NHS</option>
+  </select>
+</div>
+    <br>
+    <br>
+<div class="form-group sector-dd">
+  <label for="sel1">Issue</label>
+  <select class="form-control" id="sel1">
+    <option>Stress</option>
+    <option>Depression</option>
+    <option>Loneliness</option>
+    <option>Anxiety</option>
+  </select>
+</div>
+    <div class ="btn-submithelp">
+        <button type="button" class="btn btn-primary" disabled="disabled">Get Help</button>
     </div>
-    
 </body>
 </html>

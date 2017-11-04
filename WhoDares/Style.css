@@ -17,3 +17,20 @@ and open the template in the editor.
 .navbar-brand{
     color:white;
 }
+.user-options{
+    text-align:center;
+}
+.btn-option{
+    height:calc(15vh - 2rem);
+    width:calc(30vw - 1.5rem);
+    display:inline;
+}
+.btn-option{
+    font-size:100%;
+}
+.sector-dd{
+    text-align: center;
+}
+.btn-submithelp{
+    text-align:center;
+}
