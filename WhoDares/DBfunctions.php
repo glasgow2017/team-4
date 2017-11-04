@@ -23,7 +23,6 @@ function EmailRegister($Email, $Name, $Password, $Age, $Sex){
         $conn->close();
         return true;
     }
-    $conn->close();
     return false;
 }
 function EmailLogin($Email, $Password) {
