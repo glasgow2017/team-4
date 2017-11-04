@@ -31,8 +31,8 @@ def drawMap(queue, responder_data):
     plt.show()
 
 
-queue = pd.read_csv("/Users/alexanderjmackechnie/Desktop/code_for_good/user_data.csv")
-responder_data = pd.read_csv("/Users/alexanderjmackechnie/Desktop/code_for_good/responder_data.csv")
+queue = pd.read_csv("user_data.csv")
+responder_data = pd.read_csv("responder_data.csv")
 
 print(queue)
 print("\n\n")
@@ -58,24 +58,30 @@ for i, queueRow in queue.iterrows():
 
     for j, responderRow in responder_data.iterrows():
 
-        #Rate the responder based on the Sector.
-        if queueRow['Sector'] == responderRow['Sector']:
-            responderScores[j] += 50
+        if responderRow['Available'] != 0:
 
-        # Rate the user based on the Location
-        responderDistances[j] = gpxpy.geo.haversine_distance(queueRow['Lat'], queueRow['Long'], responderRow['Lat'], responderRow['Long'])
-        if j > 1:
-            if responderDistances[j] <
-        # if queueRow['Location'] == responderRow['Location']:
-        #     responderScores[j] += 20
+            bestLocation = 0
 
-        #Rate the user based on their Sex.
-        if queueRow['Sex'] == responderRow['Sex']:
-            responderScores[j] += 20
+            # Rate the responder based on the Sector.
+            if queueRow['Sector'] == responderRow['Sector']:
+                responderScores[j] += 50
 
-        #Rate the user based on their Age.
-        if queueRow['Age'] == responderRow['Age']:
-            responderScores[j] += 10
+            # Find the index of the closest responder
+            responderDistances[j] = gpxpy.geo.haversine_distance(queueRow['Lat'], queueRow['Long'], responderRow['Lat'],
+                                                                     responderRow['Long'])
+            if j > 0:
+                if responderDistances[j] < responderDistances[j - 1]:
+                     bestLocation = j
+
+            # Rate the user based on their Sex.
+            if queueRow['Sex'] == responderRow['Sex']:
+                responderScores[j] += 20
+
+            # Rate the user based on their Age.
+            if responderRow['Age'] + 5 < queueRow['Age'] < responderRow['Age'] + 5:
+                responderScores[j] += 10
+
+            responderScores[bestLocation] += 20
 
     print(str(responderScores))
     print(str(responderDistances))
