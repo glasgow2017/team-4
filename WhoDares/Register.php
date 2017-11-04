@@ -2,7 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
     if(isset($_POST["RegisterMe"])){
-        
+        include_once("DBfunctions.php");
+        if(EmailRegister(strip_tags($_POST["Email"]), strip_tags($_POST["Name"]), strip_tags($_POST["Password1"]), strip_tags($_POST["Age"]), strip_tags($_POST["Sex"]))){
+            echo "User: ".$_POST["Email"]." successfully registered.";
+        }else{
+            echo "Error in registration";
+        }
     }
 //var_dump($_POST);
 ?>
