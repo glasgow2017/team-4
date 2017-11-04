@@ -34,3 +34,12 @@ and open the template in the editor.
 .btn-submithelp{
     text-align:center;
 }
+.logHeader{
+    text-align:left;
+}
+.inputFields{
+    text-align:center;
+}
+.modal-header{
+    text-align: left;
+}
