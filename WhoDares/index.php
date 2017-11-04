@@ -22,8 +22,8 @@ and open the template in the editor.
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Who Dares Cares</a>
         </div>
-        <div class = "btn-type">
-            <button type="button" class="btn btn-primary navbar-btn" >Log In</button>
+        <div class = "btn-type nav-options">
+            <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#log" >Log In</button>
             <a href = "Register.php"><button type="button" class="btn btn-warning navbar-btn" >Register</button></a>
         </div>
     </div>
@@ -50,7 +50,7 @@ and open the template in the editor.
             <div class="inputFields">
                 Username: <input type="text" name="username"><br>
                 Password: <input type="text" name="password"><br><br>
-                <input type="submit" value="Submit">
+                <input id= "submitBtn" type="submit" value="Submit">
             </div>
         </form>
       </div>
