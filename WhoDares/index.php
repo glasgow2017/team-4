@@ -24,7 +24,7 @@ and open the template in the editor.
         </div>
         <div class = "btn-type">
             <button type="button" class="btn btn-primary navbar-btn" >Log In</button>
-            <button type="button" class="btn btn-warning navbar-btn">Register</button>
+            <a href = "Register.php"><button type="button" class="btn btn-warning navbar-btn" >Register</button></a>
         </div>
     </div>
 </nav>
