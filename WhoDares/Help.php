@@ -16,7 +16,7 @@ and open the template in the editor.
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Who Dares Cares</a>
+            <a class="navbar-brand" href="index.php">Who Dares Cares</a>
         </div>
         <div class = "btn-type">
             <button type="button" class="btn btn-primary navbar-btn">Log In</button>
