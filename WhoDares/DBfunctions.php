@@ -10,12 +10,12 @@ function getDB() {
 }
 
 
-function EmailRegister($Email, $Name, $Password, $Age, $Sex){
+function EmailRegister($Email, $Name, $Password, $Age, $Sex, $Phone){
     if(checkNotUserExists($Email)){
         $conn = getDB();
         $Password = hashPassword($Password);
-        $sql = "INSERT INTO users(Email, Name, Password, Age, Sex) VALUES 
-        ('".$Email."','".$Name."','".$Password."','".$Age."','".$Sex."')";
+        $sql = "INSERT INTO users(Email, Name, Password, Age, Sex, Phone) VALUES 
+        ('".$Email."','".$Name."','".$Password."','".$Age."','".$Sex."', '".$Phone."')";
         if(!$conn->query($sql)){
             echo $conn->error;
             return false;

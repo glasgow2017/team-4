@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
     if(isset($_POST["RegisterMe"])){
         include_once("DBfunctions.php");
-        if(EmailRegister(strip_tags($_POST["Email"]), strip_tags($_POST["Name"]), strip_tags($_POST["Password1"]), strip_tags($_POST["Age"]), strip_tags($_POST["Sex"]))){
+        if(EmailRegister(strip_tags($_POST["Email"]), strip_tags($_POST["Name"]), strip_tags($_POST["Password1"]), strip_tags($_POST["Age"]), strip_tags($_POST["Sex"]), strip_tags($_POST["Phone"]))){
             echo "User: ".$_POST["Email"]." successfully registered.";
         }else{
             echo "Error in registration";
@@ -45,6 +45,7 @@ and open the template in the editor.
         <input type="password" name="Password2" id="Password2" placeholder="Re-enter password" required><br>
         <input type="number" step="1" min="0" name="Age" placeholder="Age" required><br>
         <input type="text" name="Sex" placeholder="Sex" required><br>
+        <input type="tel" name="Phone" placeholder="Phone number" required><br>
         <input type="submit" name="RegisterMe">
     </form>
     

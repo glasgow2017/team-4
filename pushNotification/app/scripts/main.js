@@ -62,6 +62,8 @@ function updateBtn() {
 
 function updateSubscriptionOnServer(subscription) {
   // TODO: Send subscription to application server
+ 
+  //SAVE SUBSCRIPTION KEY TO SERVER HERE OMER
 
   const subscriptionJson = document.querySelector('.js-subscription-json');
   const subscriptionDetails =
