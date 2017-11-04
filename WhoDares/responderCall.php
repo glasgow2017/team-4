@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html lang="en">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href ="Style.css">
+    <link rel="stylesheet" href ="ResponderStyle.css">
     <head>
         <meta charset="UTF-8">
         <title>Who Dares Cares</title>
@@ -51,7 +51,7 @@ and open the template in the editor.
         </div>
         
         
-        <p id="feedbackInput"><br><b>Perceived State Feedback</b></p>
+        <p class="bodyText"><br><b>Perceived State Feedback</b></p>
         <form id="feedbackInput">
             <div class="input-group">
                 <span class="input-group-addon"><-</span>
