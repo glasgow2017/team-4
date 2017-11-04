@@ -28,7 +28,7 @@ and open the template in the editor.
 
         <div class="container">
 
-            <p><b><br>Caller Details:</b></p>            
+            <p><b><br>Caller Details</b></p>            
             <table class="table">
                 <thead>
                     <tr>
@@ -36,6 +36,7 @@ and open the template in the editor.
                         <th>Service</th>
                         <th>Age</th>
                         <th>State</th>
+                        <th>Number</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,13 +45,14 @@ and open the template in the editor.
                         <td>Ex-Military</td>
                         <td>37</td>
                         <td>Feeling uneasy</td>
+                        <td><a href="tel:+447455382667">+447455382667</a></td>
                     </tr>
 
                 </tbody>
             </table>
         </div>
-        
-        
+
+
         <p class="bodyText"><br><b>Perceived State Feedback</b></p>
         <form id="feedbackInput">
             <div class="input-group">
@@ -66,7 +68,7 @@ and open the template in the editor.
                 </select>
 
             </div>
-            
+
             <div class="input-group">
                 <span class="input-group-addon">-></span>
                 <label for="sel1"></label>
@@ -79,14 +81,16 @@ and open the template in the editor.
                 </select>
             </div>
         </form>
-        
+
         <div class="submissionButtons">
             <br>
+            
             <button type="button" class="btn btn-success">Submit Feedback</button>
             <br><br>
-            <button type="button" class="btn btn-danger">Contact Emergency Services</button>
-        </div>
+            <a href="tel:911"><button type="button" class="btn btn-danger" >Contact Emergency Services</button></a>
         
+        </div>
+
 
 
     </body>
