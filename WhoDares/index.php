@@ -48,9 +48,9 @@ and open the template in the editor.
       <div class="inputContainer modal-body">
         <form action="/action_page.php">
             <div class="inputFields">
-                Username: <input type="text" name="username"><br>
-                Password: <input type="text" name="password"><br><br>
-                <input id= "submitBtn" type="submit" value="Submit">
+                Username: <input onkeyup = "checkSubmit()" id = "username" type="text" name="username"><br>
+                Password: <input onkeyup = "checkSubmit()" id = "password" type="text" name="password"><br><br>
+                <input id= "submitBtn" type="submit" value="Submit" disabled = true>
             </div>
         </form>
       </div>
@@ -124,8 +124,16 @@ and open the template in the editor.
             }
          
         }
-        
-        
+        function checkSubmit()
+        {
+            
+            if(document.getElementById("username").value != "" && document.getElementById("password").value != ""){
+                document.getElementById("submitBtn").disabled = false;
+            }else{
+                document.getElementById("submitBtn").disabled = true;
+            }
+         
+        }
     </script>
 
 
