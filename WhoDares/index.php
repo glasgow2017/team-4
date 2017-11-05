@@ -101,7 +101,7 @@ and open the template in the editor.
                 
                 <div class ="btn-submithelp">
                     <br>Phone Number <input id = "telNum"onchange = "checkform()" onkeyup ="checkform()"type="number" name="telNum"><br><br>
-                    <button type="button" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled">Get Help</button>
+                    <button type="button" onclick = "getLocation()"class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled">Get Help</button>
                 </div>
         </form>
       </div>
@@ -113,6 +113,7 @@ and open the template in the editor.
 
   </div>
 </div>
+              <p id="test"></p>
 <script type="text/javascript" language="javascript">
         function checkform()
         {
@@ -133,6 +134,20 @@ and open the template in the editor.
                 document.getElementById("submitBtn").disabled = true;
             }
          
+        }
+        
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+               //NOT supported - DO SOMETHING
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
         }
     </script>
 

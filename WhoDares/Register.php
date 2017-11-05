@@ -46,9 +46,9 @@ and open the template in the editor.
         <input type="number" step="1" min="0" name="Age" placeholder="Age" required><br>
         <input type="text" name="Sex" placeholder="Sex" required><br>
         <input type="tel" name="Phone" placeholder="Phone number" required><br>
-        <input type="submit" name="RegisterMe">
+        <input type="submit" onsubmit ="getLocation()" name="RegisterMe">
     </form>
-    
+    <p id="test"></p>
     <script>
     function verify(){
         password1 = document.getElementById("Password1").value;
@@ -59,6 +59,18 @@ and open the template in the editor.
         }
         return true;
     }
+    function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+               //NOT supported - DO SOMETHING
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
     </script>
     
 </body>
