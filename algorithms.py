@@ -81,7 +81,7 @@ for i, queueRow in queue.iterrows():
             if responderRow['Age'] + 5 < queueRow['Age'] < responderRow['Age'] + 5:
                 responderScores[j] += 10
 
-            responderScores[bestLocation] += 20
+        responderScores[bestLocation] += 20
 
     print(str(responderScores))
     print(str(responderDistances))
