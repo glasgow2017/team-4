@@ -7,8 +7,13 @@ and open the template in the editor.
 -->
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css">
 <link rel="stylesheet" href ="Style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.js"></script>
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Who Dares Cares</title>
 </head>
@@ -49,6 +54,8 @@ and open the template in the editor.
     <div class ="btn-submithelp">
         <button type="button" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled">Get Help</button>
     </div>
+    <input id="rating" data-slider-id='rating' type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="3"/>
+    
 </body>
     <script type="text/javascript" language="javascript">
         function checkform()
@@ -59,6 +66,13 @@ and open the template in the editor.
             }
          
         }
+        $('#rating').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+        
+});
+
         
     </script>
 </html>
