@@ -46,21 +46,12 @@ and open the template in the editor.
                         ini_set('display_startup_errors', 1);
                         error_reporting(E_ALL);
 
-                        getDetails();
+                        
+                        include_once("DBfunctions.php");
+                        $conn = getDB();
+                        
 
-                        function getDB() {
-                            include_once("dbDetails.php");
-                            $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-                            if ($conn->connect_error) {
-                                die("Connection Failed: " . $conn->connect_error);
-                                echo "Couldnt connect";
-                            }
-                            return $conn;
-                        }
-
-                        function getDetails() {
-
-                            $conn = getDB();
+                            
                             $sql = "SELECT * FROM `Requests` WHERE `PhoneNumber` = 07930849680";
 
                             $row = $conn->query($sql)->fetch_assoc();
@@ -76,7 +67,6 @@ and open the template in the editor.
                             echo '<td name="Age">' . $callerAge . '</td>';
                             echo '<td name="Status">' . $callerState . '</td>';
                             echo '<td name="number"><a href="tel:' . $callerNumber . '">' . $callerNumber . '</a></td>';
-                        }
                         ?>
                     </tr>
                 </tbody>

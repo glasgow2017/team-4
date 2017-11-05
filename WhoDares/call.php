@@ -187,7 +187,7 @@ while (!$callsCompleted) {
     $ma = array_keys($responderScores, max($responderScores));
 
     $callsCompleted = true;
-    $returning = array($ma[0], $users[$i]['PhoneNumber']);
+    $returning = array($ma[0], $users[$i]);
 }
 
 //Users array starts from 0.
