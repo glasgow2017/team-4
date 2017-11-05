@@ -1,16 +1,11 @@
 <?php
 if(isset($_POST["HELPNOW"])){
     include_once("DBfunctions.php");
-    addToQueue($_POST["Sector"], 0, 0, 0, 0, $_POST["Issue"], 10, $_POST["PhoneNumber"]);
+    addToQueue($_POST["Sector"], 0, 0, 0, 0, $_POST["Issue"], 10, $_POST["PhoneNumber"], "");
 }
 ?>
 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +30,7 @@ and open the template in the editor.
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.onreadystatechange = function() {//Call a function when the state changes.
                 if(http.readyState == 4 && http.status == 200) {
-                    alert(http.responseText);
+                    alert("Your request has been sent, please wait while someone calls you back.");
                 }
             }
             http.send(params);
@@ -72,11 +67,11 @@ and open the template in the editor.
         
       </div>
       <div class="inputContainer modal-body">
-        <form action="/action_page.php">
+        <form action="Personal.php" method="post">
             <div class="inputFields">
                 Username: <input onkeyup = "checkSubmit()" id = "username" type="text" name="username"><br>
                 Password: <input onkeyup = "checkSubmit()" id = "password" type="text" name="password"><br><br>
-                <input id= "submitBtn" type="submit" value="Submit" disabled = true>
+                <input id="submitBtn" type="submit" value="Submit" name="Login" disabled = true>
             </div>
         </form>
       </div>
