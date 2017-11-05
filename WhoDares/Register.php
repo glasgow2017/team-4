@@ -21,6 +21,8 @@ and open the template in the editor.
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <link rel="stylesheet" href ="Style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Who Dares Cares</title>
@@ -32,7 +34,7 @@ and open the template in the editor.
             <a class="navbar-brand" href="index.php">Who Dares Cares</a>
         </div>
         <div class = "btn-type">
-            <button type="button" class="btn btn-primary navbar-btn">Log In</button>
+            <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#log"  >Log In</button>
         </div>
     </div>
 </nav>
@@ -71,7 +73,45 @@ and open the template in the editor.
             document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
             "<br>Longitude: " + position.coords.longitude;
         }
+        function checkSubmit()
+        {
+            
+            if(document.getElementById("username").value != "" && document.getElementById("password").value != ""){
+                document.getElementById("submitBtn").disabled = false;
+            }else{
+                document.getElementById("submitBtn").disabled = true;
+            }
+         
+        }
     </script>
+    <div id="log" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log In</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="inputContainer modal-body">
+        <form action="Personal.php" method="post">
+            <div class="inputFields">
+                Username: <input onkeyup = "checkSubmit()" id = "username" type="text" name="username"><br>
+                Password: <input onkeyup = "checkSubmit()" id = "password" type="password" name="password"><br><br>
+                <input id="submitBtn" type="submit" value="Submit" name="Login" disabled = true>
+            </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     
 </body>
 </html>
