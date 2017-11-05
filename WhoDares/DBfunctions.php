@@ -14,8 +14,8 @@ function EmailRegister($Email, $Name, $Password, $Age, $Sex, $Phone){
     if(checkNotUserExists($Email)){
         $conn = getDB();
         $Password = hashPassword($Password);
-        $sql = "INSERT INTO users(Email, Name, Password, Age, Sex, Phone) VALUES 
-        ('".$Email."','".$Name."','".$Password."','".$Age."','".$Sex."', '".$Phone."')";
+        $sql = "INSERT INTO users(Email, Name, Password, Age, Sex, Number) VALUES 
+        ('".$Email."','".$Name."','".$Password."','".$Age."','".$Sex."','".$Phone."')";
         if(!$conn->query($sql)){
             echo $conn->error;
             return false;
@@ -65,10 +65,17 @@ function checkNotUserExists($Email){
     return ($result1 == 0);
 }
 
-function addToQueue($Sector, $Lat, $Lon, $Sex, $Age, $Issue, $Urgency, $PhoneNumber){
+function addToQueue($Sector, $Lat, $Lon, $Sex, $Age, $Issue, $Urgency, $PhoneNumber, $Name){
     $conn = getDB();
-    $conn->query("INSERT INTO `Requests`(`Sector`, `Lat`, `Lon`, `Sex`, `Age`, `Issue`, `Urgency`, `PhoneNumber`) VALUES ('".$Sector."','".$Lat."','".$Lon."','".$Sex."','".$Age."','".$Issue."','".$Urgency."','".$PhoneNumber."')");
+    $conn->query("INSERT INTO Requests(Sector, Lat, Lon, Sex, Age, Issue, Urgency, PhoneNumber, Name) VALUES ('".$Sector."','".$Lat."','".$Lon."','".$Sex."','".$Age."','".$Issue."','".$Urgency."','".$PhoneNumber."','".$Name."')");
     $conn->close();
+}
+
+function getProfile($Email){
+    $conn = getDB();
+    $profile = $conn->query("SELECT * FROM users WHERE Email='".$Email."'")->fetch_assoc();
+    $conn->close();
+    return $profile;
 }
 
 ?>
