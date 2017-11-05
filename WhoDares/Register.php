@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
         if(EmailRegister(strip_tags($_POST["Email"]), strip_tags($_POST["Name"]), strip_tags($_POST["Password1"]), strip_tags($_POST["Age"]), strip_tags($_POST["Sex"]), strip_tags($_POST["Phone"]))){
             //echo "User: ".$_POST["Email"]." successfully registered.";
             echo '<script language="javascript">';
-            echo 'alert("User: ".$_POST["Email"]." successfully registered.")';
+            echo 'alert("User successfully registered")';
             echo '</script>';
         }else{
             //echo "Error in registration";
