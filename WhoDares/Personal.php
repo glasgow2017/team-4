@@ -5,6 +5,8 @@ if(isset($_POST["Login"]) && !isset($_SESSION["username"])){
     if(EmailLogin($_POST["username"], $_POST["password"])){
         $_SESSION["username"] = $_POST["username"];
         $user = getProfile($_POST["username"]);
+    }else{
+        header("Location:index.php");
     }
 }elseif(isset($_SESSION["username"])){
     $user = getProfile($_SESSION["username"]);
