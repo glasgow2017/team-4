@@ -6,6 +6,7 @@
  * Time: 19:22
  */
 
+
 function cmp($a, $b) {
     return $a["Urgency"] - $b["Urgency"];
 }
@@ -28,17 +29,14 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     }
 }
 
+function getSomeObject(){
 // -----------------------------------------Connect to the Database -----------------------------------//
-
-$link = mysqli_connect("localhost", "AlexMackechnie", "Zander1996", "code_for_good");
+include_once("DBfunctions.php");
+$link = getDB();
 
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
-} elseif ($link == true) {
-    echo "connected to database";
-    echo "<br>";
-    echo "<br>";
 }
 
 // ----------------------------------------- Insert into database  ------------------------------------//
@@ -66,7 +64,7 @@ if($link === false){
 
 $users = [[]];
 
-$result = $link->query("SELECT * FROM data");
+$result = $link->query("SELECT * FROM Requests");
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -81,23 +79,15 @@ if ($result->num_rows > 0) {
 
 $responders = [[]];
 
-$result2 = $link->query("SELECT * FROM responders");
+$result2 = $link->query("SELECT * FROM Responders");
 
-echo "RESPONDERS";
-echo "<br>";
 if ($result2->num_rows > 0) {
     while($row2 = $result2->fetch_assoc()) {
         $arr2 = array("Sector" => $row2["Sector"], "Lat" => $row2["Lat"], "Lon" => $row2["Lon"],
             "Sex" => $row2["Sex"], "Age" => $row2["Age"],
             "Specialty" => $row2["Specialty"], "Availability" => $row2["Availability"]);
         array_push($responders, $arr2);
-        echo $row2["Sector"] . " " . $row2["Lat"] . " " . $row2["Lon"]
-            . " " . $row2["Sex"] . " " . $row2["Age"] . " " . $row2["Specialty"]
-            . " " . $row2["Availability"];
-        echo "<br>";
     }
-} else {
-    echo "0 results";
 }
 
 
@@ -113,18 +103,6 @@ if ($result2->num_rows > 0) {
 usort($users, "cmp");
 $users = array_reverse($users);
 //
-echo "<br><br>";
-echo "USERS";
-echo "<br>";
-for ($i = 0; $i < sizeof($users); $i++) {
-    echo $users[$i]["Sector"] . " " . $users[$i]["Lat"] . " " .
-        $users[$i]["Lon"] . " " . $users[$i]["Sex"] . " " .
-        $users[$i]["Age"] . " " . $users[$i]["Issue"] . " " .
-        $users[$i]["Urgency"] . " " . $users[$i]["PhoneNumber"];
-    echo "<br>";
-}
-
-echo "<br><br>";
 
 //    foreach($users as $small){
 //        foreach($small as $value) {
@@ -137,12 +115,6 @@ echo "<br><br>";
 
 $users = array_values($users);
 $responders = array_values($responders);
-
-echo "<br><br>";
-echo $users[0]["Sector"];
-echo "<br>";
-echo $responders[1]["Sector"];
-echo "<br><br>";
 
 $callsCompleted = false;
 
@@ -160,8 +132,6 @@ while (!$callsCompleted) {
 
         $responderScores = array_fill(0, sizeof($responders), 0);
         $responderDistances = array_fill(0, sizeof($responders), 0);
-
-        echo $responderScores[1] . " " . $responderScores[2] . " " . $responderScores[3] . "<br>";
 
         //Responders array starts from 1.
         for ($j = 1; $j < sizeof($responders); $j++) {
@@ -212,21 +182,16 @@ while (!$callsCompleted) {
             $responderScores[$bestLocation] += 20;
         }
 
-        echo $responderDistances[1] . ", " . $responderDistances[2] . ", " . $responderDistances[3] . "<br>";
-        echo $responderScores[1] . ", " . $responderScores[2] . ", " . $responderScores[3] . "<br><br>";
-
     }
 
     $ma = array_keys($responderScores, max($responderScores));
-    echo $ma[0];
 
     $callsCompleted = true;
+    $returning = array($ma[0], $users[$i]['PhoneNumber']);
 }
 
 //Users array starts from 0.
 
-echo "<br><br>finished";
-
-
+}
 
 ?>
