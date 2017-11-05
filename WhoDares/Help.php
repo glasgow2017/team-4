@@ -70,6 +70,7 @@ and open the template in the editor.
 	formatter: function(value) {
 		return 'Current value: ' + value;
 	}
+        
 });
 
         
