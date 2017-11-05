@@ -87,7 +87,7 @@ and open the template in the editor.
         <p class="bodyText"><br><b>Perceived State Feedback</b></p>
         <form id="feedbackInput">
             <div class="input-group">
-                <span class="input-group-addon"><-</span>
+                <span class="input-group-addon">Call Start</span>
 
                 <label for="sel1"></label>
                 <select class="form-control">
@@ -101,7 +101,7 @@ and open the template in the editor.
             </div>
 
             <div class="input-group">
-                <span class="input-group-addon">-></span>
+                <span class="input-group-addon">Call End</span>
                 <label for="sel1"></label>
                 <select class="form-control" id="afterFeedback">
                     <option>1</option>
