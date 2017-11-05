@@ -56,7 +56,7 @@ and open the template in the editor.
         <input type="tel" name="Phone" placeholder="Phone number" required><br>
         <input type="submit" onsubmit ="getLocation()" name="RegisterMe">
     </form>
-    <p id="test"></p>
+    
     <script>
     function verify(){
         password1 = document.getElementById("Password1").value;
@@ -75,10 +75,7 @@ and open the template in the editor.
             }
         }
 
-        function showPosition(position) {
-            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
-            "<br>Longitude: " + position.coords.longitude;
-        }
+        
         function checkSubmit()
         {
             

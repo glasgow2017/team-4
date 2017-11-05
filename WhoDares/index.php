@@ -143,7 +143,7 @@ if(isset($_POST["HELPNOW"])){
 
   </div>
 </div>
-              <p id="test"></p>
+              
 <script type="text/javascript" language="javascript">
         function checkform()
         {
