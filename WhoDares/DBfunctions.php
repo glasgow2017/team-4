@@ -65,4 +65,10 @@ function checkNotUserExists($Email){
     return ($result1 == 0);
 }
 
+function addToQueue($Sector, $Lat, $Lon, $Sex, $Age, $Issue, $Urgency, $PhoneNumber){
+    $conn = getDB();
+    $conn->query("INSERT INTO `Requests`(`Sector`, `Lat`, `Lon`, `Sex`, `Age`, `Issue`, `Urgency`, `PhoneNumber`) VALUES ('".$Sector."','".$Lat."','".$Lon."','".$Sex."','".$Age."','".$Issue."','".$Urgency."','".$PhoneNumber."')");
+    $conn->close();
+}
+
 ?>

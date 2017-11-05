@@ -1,3 +1,10 @@
+<?php
+if(isset($_POST["HELPNOW"])){
+    include_once("DBfunctions.php");
+    addToQueue($_POST["Sector"], 0, 0, 0, 0, $_POST["Issue"], 10, $_POST["PhoneNumber"]);
+}
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -15,6 +22,25 @@ and open the template in the editor.
     <meta charset="UTF-8">
     <title>Who Dares Cares</title>
 </head>
+    
+    <script>
+        function postReq(){
+            var http = new XMLHttpRequest();
+            var url = "index.php";
+            var form = document.forms["helpForm"];
+            var params = "HELPNOW=" + form.elements['HELPNOW'].name + "&Sector=" + form.elements["Sector"].value + "&Issue=" + form.elements["Issue"].value + "&PhoneNumber=" + form.elements["telNum"].value;
+            http.open("POST", url, true);
+            
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.readyState == 4 && http.status == 200) {
+                    alert(http.responseText);
+                }
+            }
+            http.send(params);
+        }
+    </script>
 <body>
 
 <nav class="navbar navbar-default">
@@ -75,10 +101,10 @@ and open the template in the editor.
         
       </div>
       <div class="inputContainer modal-body">
-        <form action="/action_page.php">
+        <form onsubmit="postReq()" id="helpForm">
                         <div class="form-group sector-dd">
               <label for="sel1">Sector</label>
-              <select onchange = "checkform()"class="form-control" id="sectorSelect">
+              <select onchange = "checkform()"class="form-control" id="sectorSelect" name="Sector">
                 <option selected="selected" disabled = "disabled">Choose option</option>
                 <option>Army Vet</option>
                 <option>Fire service</option>
@@ -90,7 +116,7 @@ and open the template in the editor.
                 <br>
             <div class="form-group sector-dd">
               <label for="sel1">Issue</label>
-              <select onchange = "checkform()" class="form-control" id="issueSelect">
+              <select onchange = "checkform()" class="form-control" id="issueSelect" name="Issue">
                 <option selected="selected" disabled = "disabled">Choose option</option>
                 <option>Stress</option>
                 <option>Depression</option>
@@ -101,7 +127,8 @@ and open the template in the editor.
                 
                 <div class ="btn-submithelp">
                     <br>Phone Number <input id = "telNum"onchange = "checkform()" onkeyup ="checkform()"type="number" name="telNum"><br><br>
-                    <button type="button" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled">Get Help</button>
+                    <input type="submit" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled" name="HELPNOW" value="Get Help">
+                    
                 </div>
         </form>
       </div>
