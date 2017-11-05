@@ -38,7 +38,6 @@ function EmailLogin($Email, $Password) {
                 if(!$conn->query($sql))
                     return false;
             }
-            $_SESSION['LoggedIn'] = true;
             $conn->close();
             return true;
         }
@@ -47,6 +46,8 @@ function EmailLogin($Email, $Password) {
             $conn->close();
             return false;
         }
+    }else{
+        return false;
     }
 
 }
