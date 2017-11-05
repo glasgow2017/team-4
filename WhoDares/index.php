@@ -1,7 +1,9 @@
 <?php
 if(isset($_POST["HELPNOW"])){
     include_once("DBfunctions.php");
+    include_once("call.php");
     addToQueue($_POST["Sector"], 0, 0, 0, 0, $_POST["Issue"], 10, $_POST["PhoneNumber"], "");
+    $details = getSomeObject();
 }
 ?>
 
