@@ -79,7 +79,7 @@ if(isset($_POST["HELPNOW"])){
         <form action="Personal.php" method="post">
             <div class="inputFields">
                 Username: <input onkeyup = "checkSubmit()" id = "username" type="text" name="username"><br>
-                Password: <input onkeyup = "checkSubmit()" id = "password" type="text" name="password"><br><br>
+                Password: <input onkeyup = "checkSubmit()" id = "password" type="password" name="password"><br><br>
                 <input id="submitBtn" type="submit" value="Submit" name="Login" disabled = true>
             </div>
         </form>
