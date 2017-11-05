@@ -37,8 +37,7 @@ if(isset($_POST["ChangeNum"])){
         <h1>Welcome <?php echo $user["Name"] ?></h1>
         
         <div class ="user-options">
-        <button type="button" class="btn btn-primary btn-option" data-toggle="modal" data-target="#log">I need help</button>
-        <button type="button" class="btn btn-success btn-option" data-toggle="modal" data-target="#help">I REALLY NEED HELP</button>
+        <button type="button" class="btn btn-primary btn-option">I would like to talk to someone</button>
         
     </div>
         
