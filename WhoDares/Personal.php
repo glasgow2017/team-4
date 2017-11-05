@@ -1,13 +1,15 @@
 <?php
-if(isset($_POST["Login"])){
+if(isset($_POST["Login"]) && !isset($_SESSION["username"])){
     include_once("DBfunctions.php");
     if(EmailLogin($_POST["username"], $_POST["password"])){
+        session_start();
         $_SESSION["username"] = $_POST["username"];
         $user = getProfile($_POST["username"]);
     }
+}elseif(isset($_SESSION["username"])){
+    $user = getProfile($_SESSION["username"]);
 }else{
-    //header('Location:index.php');
-    var_dump($_POST);
+    header("Location:index.php");
 }
 ?>
 
@@ -26,6 +28,13 @@ if(isset($_POST["Login"])){
     
     <body>
         <h1>Welcome <?php echo $user["Name"] ?></h1>
+        
+        <div class ="user-options">
+        <button type="button" class="btn btn-primary btn-option" data-toggle="modal" data-target="#log">Log in to Get help</button>
+        <button type="button" class="btn btn-success btn-option" data-toggle="modal" data-target="#help">Get help immediately</button>
+        
+    </div>
+        
     </body>
     
 </html>
