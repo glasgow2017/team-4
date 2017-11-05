@@ -35,7 +35,7 @@ and open the template in the editor.
                         <th>Name</th>
                         <th>Service</th>
                         <th>Age</th>
-                        <th>State</th>
+                        <th>Issue</th>
                         <th>Number</th>
                     </tr>
                 </thead>
@@ -85,17 +85,17 @@ and open the template in the editor.
 
 
         <p class="bodyText"><br><b>Perceived State Feedback</b></p>
-        <form id="feedbackInput">
+        <form id="feedbackInput" action="addResponderFeedback.php">
             <div class="input-group">
                 <span class="input-group-addon">Call Start</span>
 
                 <label for="sel1"></label>
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" id="beforeFeedback">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
             </div>
@@ -104,22 +104,28 @@ and open the template in the editor.
                 <span class="input-group-addon">Call End</span>
                 <label for="sel1"></label>
                 <select class="form-control" id="afterFeedback">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
+            <div class="submissionButtons">
+                <br>
+
+
+                <button type="submit" class="btn btn-success">Submit Feedback</button>
+
+                <br><br>
+                <a href="tel:911"><button type="button" class="btn btn-danger" >Contact Emergency Services</button></a>
+
+            </div>
+
+
         </form>
 
-        <div class="submissionButtons">
-            <br>
-            <button type="button" class="btn btn-success">Submit Feedback</button>
-            <br><br>
-            <a href="tel:911"><button type="button" class="btn btn-danger" >Contact Emergency Services</button></a>
 
-        </div>
     </body>
 </html>
 
