@@ -41,11 +41,47 @@ and open the template in the editor.
                 </thead>
                 <tbody>
                     <tr>
-                        <td>John Doe</td>
-                        <td>Ex-Military</td>
-                        <td>37</td>
-                        <td>Feeling uneasy</td>
-                        <td><a href="tel:+447455382667">+447455382667</a></td>
+                        <?php
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+
+            getDetails();
+
+            function getDB() {
+                include_once("dbDetails.php");
+                $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                if ($conn->connect_error) {
+                    die("Connection Failed: " . $conn->connect_error);
+                    echo "Couldnt connect";
+                }
+                return $conn;
+            }
+
+            function getDetails() {
+
+                $conn = getDB();
+                $sql = "SELECT * FROM `Requests` WHERE `PhoneNumber` = 07930849680";
+
+                $row = $conn->query($sql)->fetch_assoc();
+                $callerName = $row['Name'];
+                $callerService = $row['Sector'];
+                $callerAge = $row['Age'];
+                $callerState = $row['Issue'];
+                $callerNumber = $row['PhoneNumber'];
+            
+                
+                echo '<td name="Name">'.$callerName.'</td>';
+                echo '<td name="Sector">'.$callerService.'</td>';
+                echo '<td name="Age">'.$callerAge.'</td>';
+                echo '<td name="Status">'.$callerState.'</td>';
+                echo '<td name="number"><a href="tel:'.$callerNumber.'">'.$callerNumber.'</a></td>';
+                
+                
+            }
+        ?>
+                        
+                        
                     </tr>
 
                 </tbody>
@@ -84,14 +120,15 @@ and open the template in the editor.
 
         <div class="submissionButtons">
             <br>
-            
+
             <button type="button" class="btn btn-success">Submit Feedback</button>
             <br><br>
             <a href="tel:911"><button type="button" class="btn btn-danger" >Contact Emergency Services</button></a>
-        
+
         </div>
 
 
+        
 
     </body>
 </html>
