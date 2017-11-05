@@ -18,6 +18,11 @@ if(isset($_POST["ChangeNum"])){
     updateNumber($user["Email"],$_POST["telNum"]);
     echo("Number successfully updated");
 }
+
+if(isset($_POST["helpPLS"])){
+    addToQueue("", "0", "0", $user["Sex"], $user["Age"], "", 5, $user["Number"], $user["Name"]);
+    echo ("Added to queue");
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +42,10 @@ if(isset($_POST["ChangeNum"])){
         <h1>Welcome <?php echo $user["Name"] ?></h1>
         
         <div class ="user-options">
-        <button type="button" class="btn btn-primary btn-option">I would like to talk to someone</button>
+            <form method="post" action="Personal.php">
+                <input type="submit" class="btn btn-primary btn-option" name="helpPLS" value="I would like to talk to someone">
+            </form>
+        
         
     </div>
         
