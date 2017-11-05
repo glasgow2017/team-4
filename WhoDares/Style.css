@@ -69,3 +69,7 @@ and open the template in the editor.
 #submitBtn{
     width:34vw;
 }
+#updateNumber{
+    text-align: center;
+    padding-top: 10%;
+}
