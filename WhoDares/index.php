@@ -100,7 +100,7 @@ and open the template in the editor.
             </div>
                 
                 <div class ="btn-submithelp">
-                    <br>Phone Number <input type="number" name="number"><br><br>
+                    <br>Phone Number <input id = "telNum"onchange = "checkform()" onkeyup ="checkform()"type="number" name="telNum"><br><br>
                     <button type="button" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled">Get Help</button>
                 </div>
         </form>
@@ -117,11 +117,14 @@ and open the template in the editor.
         function checkform()
         {
             
-            if(document.getElementById("issueSelect").value != "Choose option" && document.getElementById("sectorSelect").value != "Choose option"){
+            if(document.getElementById("issueSelect").value != "Choose option" && document.getElementById("sectorSelect").value != "Choose option" && document.getElementById("telNum").value.length == 11){
                 document.getElementById("btn-Help").disabled = false;
+            }else{
+                document.getElementById("btn-Help").disabled = true;
             }
          
         }
+        
         
     </script>
 
