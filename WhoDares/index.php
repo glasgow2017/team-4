@@ -175,10 +175,10 @@ if(isset($_POST["HELPNOW"])){
             }
         }
 
-        function showPosition(position) {
-            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
-            "<br>Longitude: " + position.coords.longitude;
-        }
+//        function showPosition(position) {
+//            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
+//            "<br>Longitude: " + position.coords.longitude;
+//        }
     </script>
 
 
