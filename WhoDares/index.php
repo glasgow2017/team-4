@@ -74,9 +74,9 @@ and open the template in the editor.
       <div class="inputContainer modal-body">
         <form action="/action_page.php">
             <div class="inputFields">
-                Username: <input type="text" name="username"><br>
-                Password: <input type="text" name="password"><br><br>
-                <input id= "submitBtn" type="submit" value="Submit">
+                Username: <input onkeyup = "checkSubmit()" id = "username" type="text" name="username"><br>
+                Password: <input onkeyup = "checkSubmit()" id = "password" type="text" name="password"><br><br>
+                <input id= "submitBtn" type="submit" value="Submit" disabled = true>
             </div>
         </form>
       </div>
@@ -128,7 +128,6 @@ and open the template in the editor.
                 <div class ="btn-submithelp">
                     <br>Phone Number <input id = "telNum"onchange = "checkform()" onkeyup ="checkform()"type="number" name="telNum"><br><br>
                     <input type="submit" class="btn btn-primary btn-Help" id ="btn-Help" disabled="disabled" name="HELPNOW" value="Get Help">
-                    
                 </div>
         </form>
       </div>
@@ -140,6 +139,7 @@ and open the template in the editor.
 
   </div>
 </div>
+              <p id="test"></p>
 <script type="text/javascript" language="javascript">
         function checkform()
         {
@@ -151,8 +151,30 @@ and open the template in the editor.
             }
          
         }
+        function checkSubmit()
+        {
+            
+            if(document.getElementById("username").value != "" && document.getElementById("password").value != ""){
+                document.getElementById("submitBtn").disabled = false;
+            }else{
+                document.getElementById("submitBtn").disabled = true;
+            }
+         
+        }
         
-        
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+               //NOT supported - DO SOMETHING
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
     </script>
 
 

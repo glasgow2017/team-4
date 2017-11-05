@@ -29,7 +29,7 @@ and open the template in the editor.
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Who Dares Cares</a>
+            <a class="navbar-brand" href="index.php">Who Dares Cares</a>
         </div>
         <div class = "btn-type">
             <button type="button" class="btn btn-primary navbar-btn">Log In</button>
@@ -46,9 +46,9 @@ and open the template in the editor.
         <input type="number" step="1" min="0" name="Age" placeholder="Age" required><br>
         <input type="text" name="Sex" placeholder="Sex" required><br>
         <input type="tel" name="Phone" placeholder="Phone number" required><br>
-        <input type="submit" name="RegisterMe">
+        <input type="submit" onsubmit ="getLocation()" name="RegisterMe">
     </form>
-    
+    <p id="test"></p>
     <script>
     function verify(){
         password1 = document.getElementById("Password1").value;
@@ -59,6 +59,18 @@ and open the template in the editor.
         }
         return true;
     }
+    function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+               //NOT supported - DO SOMETHING
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('test').innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
     </script>
     
 </body>
