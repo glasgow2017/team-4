@@ -78,10 +78,15 @@ function getProfile($Email){
     return $profile;
 }
 
-
 function addToCallCheck($person){
     $conn = getDB();
     $profile = $conn->query("INSERT INTO callCheck(Name, Service, Age, Issue, Number) VALUES ('".$person["Name"]."','".$person["Service"]."','".$person["Age"]."','".$person["Issue"]."','".$person["Number"]."')");
+    $conn->close();
+}
+
+function updateNumber($Email, $Number){
+    $conn = getDB();
+    $conn->query("UPDATE users SET Number=".$Number." WHERE Email='".$Email."'");
     $conn->close();
 }
 ?>

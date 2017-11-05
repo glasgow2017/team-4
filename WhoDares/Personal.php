@@ -1,8 +1,8 @@
 <?php
+session_start();
+include_once("DBfunctions.php");
 if(isset($_POST["Login"]) && !isset($_SESSION["username"])){
-    include_once("DBfunctions.php");
     if(EmailLogin($_POST["username"], $_POST["password"])){
-        session_start();
         $_SESSION["username"] = $_POST["username"];
         $user = getProfile($_POST["username"]);
     }
@@ -10,6 +10,11 @@ if(isset($_POST["Login"]) && !isset($_SESSION["username"])){
     $user = getProfile($_SESSION["username"]);
 }else{
     header("Location:index.php");
+}
+if(isset($_POST["ChangeNum"])){
+    include_once("DBfunctions.php");
+    updateNumber($user["Email"],$_POST["telNum"]);
+    echo("Number successfully updated");
 }
 ?>
 
@@ -30,10 +35,18 @@ if(isset($_POST["Login"]) && !isset($_SESSION["username"])){
         <h1>Welcome <?php echo $user["Name"] ?></h1>
         
         <div class ="user-options">
-        <button type="button" class="btn btn-primary btn-option" data-toggle="modal" data-target="#log">Log in to Get help</button>
-        <button type="button" class="btn btn-success btn-option" data-toggle="modal" data-target="#help">Get help immediately</button>
+        <button type="button" class="btn btn-primary btn-option" data-toggle="modal" data-target="#log">I need help</button>
+        <button type="button" class="btn btn-success btn-option" data-toggle="modal" data-target="#help">I REALLY NEED HELP</button>
         
     </div>
+        
+        <div>
+            <form id="updateNumber" name="updateNumber" method="POST">
+                Phone Number <input id = "telNum" onkeyup ="checkform()"type="tel" name="telNum" placeholder="<?php echo $user["Number"]; ?>">
+                <input type="submit" name="ChangeNum" value="Change Number">
+            </form>
+            
+        </div>
         
     </body>
     
