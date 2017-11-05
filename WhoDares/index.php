@@ -4,6 +4,7 @@ if(isset($_POST["HELPNOW"])){
     include_once("call.php");
     addToQueue($_POST["Sector"], 0, 0, 0, 0, $_POST["Issue"], 10, $_POST["PhoneNumber"], "");
     $details = getSomeObject();
+    addToCallCheck($details);
 }
 ?>
 
@@ -37,6 +38,8 @@ if(isset($_POST["HELPNOW"])){
             http.onreadystatechange = function() {//Call a function when the state changes.
                 if(http.readyState == 4 && http.status == 200) {
                     alert("Your request has been sent, please wait while someone calls you back.");
+                }else{
+                    alert("Failed");
                 }
             }
             http.send(params);
